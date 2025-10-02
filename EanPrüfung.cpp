@@ -42,13 +42,15 @@ int main()
 void eanCheckProgram()
 {
     string input = "";
-
+    system("cls");
+    
     while(input != "exit")
     {
         cout << "\033[34mEAN Check Menue\033[0m: \nTo exit the Programm type 'exit'\nGib die zu ueberpruefende EAN Nummer ein:\n";
         cin >> input;
         if(input == "exit")
         {
+            waitForUser();
             break;
         }
         if(!checkValidEAN(input))
