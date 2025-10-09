@@ -33,7 +33,12 @@ If there are more or less digits or other symbols in the string, we give the Use
 
 ## eanValidation
 ``` md
-Here we check if the EAN is valid or invalid.
+Here we check if the EAN is valid or invalid:
+
+ - Multiply the digits (excluding the check digit) alternately by 1 and 3.
+ - Add up the results.
+ - Calculate the remainder of the sum when divided by 10.
+ - The check digit is the number needed to reach the next multiple of 10.
 ```
 
 ## isPlaceholder
