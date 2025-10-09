@@ -87,3 +87,51 @@ If it is valid, we get a response in the console `valid EAN`.
 Else we get a respone `invalid string`. 
 After we pressed a key, we get back to the eanmenue and can input the next ean for the check.
 ```
+
+# Control flow graph
+### Legend
+``` md
+(1)           Startpoint (Programstart)
+(2)           Mainmenue and userinput
+(3–6)         Testmode: run Tests, shows results, waits for input of user, return to mainmenue
+(7–17)        EAN-Checker-Menue with loop – checks input, runs validation, shows results, return to mainmenue
+(10)          return to mainmenue if input is 'exit
+(18)          Programend
+```
+
+``` scss
+(1) Start
+ ↓
+(2) mainMenue display [1=Tests, 2=EanCheck, 0=End]
+ ↓
+ ├── [input == 1] → (3)
+ │                   ↓
+ │                 (4) runTests()
+ │                   ↓
+ │                 (5) runTestsAssert()
+ │                   ↓
+ │                 (6) waitForUser()
+ │                   ↓
+ │                 (2) back to mainmenue
+ │
+ ├── [input == 2] → (7)
+ │                   ↓
+ │                 (8) eanCheckProgram()
+ │                   ↓
+ │                 (9) check input
+ │                     ↓
+ │                     ├── [input == "exit"] → (10) waitForUser() → (2)
+ │                     │
+ │                     ├── [!checkValidEAN] → (11) errormessage → (12) waitForUser() → (8)
+ │                     │
+ │                     ├── [checkValidEAN == true]
+ │                     │         ↓
+ │                     │     (13) eanValidation(input)
+ │                     │         ↓
+ │                     │         ├── [valid] → (14) "EAN valid" → (15) waitForUser() → (8)
+ │                     │         └── [invalid] → (16) "EAN invalid" → (17) waitForUser() → (8)
+ │                     │
+ │                     └── (8) while untin input = "exit"
+ │
+ └── [input == 0] → (18) End Program
+```
