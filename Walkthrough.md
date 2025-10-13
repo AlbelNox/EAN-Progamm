@@ -94,19 +94,19 @@ After we pressed a key, we get back to the eanmenue and can input the next ean f
 ```mermaid
 graph TD
 subgraph "runTestsAssert()"
-A((start)) ==> B((for))
-B --> C((end for))
-C --> D((for))
-D --> E((end for))
-E --> F((for))
-F --> G((end for))
-G --> H((for))
-H --> I((end for))
-I --> J((for))
-J --> K((end for))
-K --> L((for))
-L --> M((end for))
-M ==>|input| N((end))
+A((***A1*** start)) ==> B((***A2*** for))
+B --> C((***A3*** end for))
+C --> D((***A4*** for))
+D --> E((***A5*** end for))
+E --> F((***A6*** for))
+F --> G((***A7*** end for))
+G --> H((***A8*** for))
+H --> I((***A9*** end for))
+I --> J((***A10*** for))
+J --> K((***A11*** end for))
+K --> L((***A12*** for))
+L --> M((***A13*** end for))
+M ==>|input| N((***A14*** end))
 end
 ```
 
@@ -114,31 +114,31 @@ end
 ```mermaid
 graph TD
 subgraph "runTests()"
-A((start)) ==> B((for))
-B --> C((if))
-C --> D((endif))
-D --> E((end for))
-E --> F((for))
-F --> G((if))
-G --> H((endif))
-H --> I((end for))
-I --> J((for))
-J --> K((if))
-K --> L((end if))
-L --> M((end for))
-M --> N((for))
-N --> O((if))
-O --> P((endif))
-P --> Q((end for))
-Q --> R((for))
-R --> S((if))
-S --> T((end if))
-T --> U((endfor))
-U --> V((for))
-V --> W((if))
-W --> X((endif))
-X --> Y((end for))
-Y ==> Z((end))
+A((***B1*** start)) ==> B((***B2*** for))
+B --> C((***B3*** if))
+C --> D((***B4*** endif))
+D --> E((***B5*** end for))
+E --> F((***B6*** for))
+F --> G((***B7*** if))
+G --> H((***B8*** endif))
+H --> I((***B9*** end for))
+I --> J((***B10*** for))
+J --> K((***B11*** if))
+K --> L((***B12*** end if))
+L --> M((***B13*** end for))
+M --> N((***B14*** for))
+N --> O((***B15*** if))
+O --> P((***B16*** endif))
+P --> Q((***B17*** end for))
+Q --> R((***B18*** for))
+R --> S((***B19*** if))
+S --> T((***B20*** end if))
+T --> U((***B21*** endfor))
+U --> V((***B22*** for))
+V --> W((***B23*** if))
+W --> X((***B24*** endif))
+X --> Y((***B25*** end for))
+Y ==> Z((***B26*** end))
 end
 ```
 
@@ -146,7 +146,7 @@ end
 ```mermaid
 graph TD
 subgraph "waitForUser()"
-A((start)) ==>|input| B((end)) 
+A((***C1*** start)) ==>|input| B((***C2*** end)) 
 end
 ```
 
@@ -154,9 +154,9 @@ end
 ```mermaid
 graph TD
 subgraph "isPlaceholder()"
-A((start)) ==> B((if))
-B --> C((end if))
-C ==> D((end))
+A((***D1*** start)) ==> B((***D2*** if))
+B --> C((***D3*** end if))
+C ==> D((***D4*** end))
 end
 ```
 
@@ -164,20 +164,20 @@ end
 ```mermaid
 graph TD
 subgraph "Main()"
-A((start)) ==> B((While))
-B -->|input| C((switch))
-C -.-> D((case 1:))
-C -.-> E((case 2:))
-C -.-> F((case 0:))
-C -.-> G((default))
-D -.-> H((end switch))
+A((***E1*** start)) ==> B((***E2*** While))
+B -->|input| C((***E3*** switch))
+C -.-> D((***E4*** case 1:))
+C -.-> E((***E5*** case 2:))
+C -.-> F((***E6*** case 0:))
+C -.-> G((***E7*** default))
+D -.-> H((***E8*** end switch))
 E -.-> H
 F -.-> H
 G -.-> H
-H --> I((end while))
+H --> I((***E9*** end while))
 B --> I
 H --> B
-I ==> J((end))
+I ==> J((***E10*** end))
 end
 ```
 
@@ -185,10 +185,10 @@ end
 ```mermaid
 graph TD
 subgraph "eanValidation()"
-A((start)) ==> B((for))
-B --> C((endfor))
-C --> D((if))
-D ==> E((end))
+A((***F1*** start)) ==> B((***F2*** for))
+B --> C((***F3*** endfor))
+C --> D((***F4*** if))
+D ==> E((***F5*** end))
 end
 ```
 
@@ -196,13 +196,13 @@ end
 ```mermaid
 graph TD
 subgraph "checkValidEAN()"
-A((start)) ==> B((if))
-B -.-> C((then))
-B -.-> D((else))
-C --> E((if))
-E -.-> F((then))
-E -.-> G((else))
-G ==> H((end))
+A((***G1*** start)) ==> B((***G2*** if))
+B -.-> C((***G3*** then))
+B -.-> D((***G4*** else))
+C --> E((***G5*** if))
+E -.-> F((***G6*** then))
+E -.-> G((***G7*** else))
+G ==> H((***G8*** end))
 D ==> H
 F ==> H
 end
@@ -212,21 +212,21 @@ end
 ```mermaid
 graph TD
 subgraph "eanCheckProgram()"
-A((start)) ==> B((while))
-B-->|input| C((if))
-C -.-> D((then))
+A((***H1*** start)) ==> B((***H2*** while))
+B-->|input| C((***H3*** if))
+C -.-> D((***H4*** then))
 D -->|input| L
-C --> E((end if))
-E --> F((if))
-F -.-> G((then))
+C --> E((***H5*** end if))
+E --> F((***H6*** if))
+F -.-> G((***H7*** then))
 G -->|input| L
-F --> H((end if))
-H --> I((if))
-I -.-> J((then))
+F --> H((***H8*** end if))
+H --> I((***H9*** if))
+I -.-> J((***H10*** then))
 J -->|input| L
-I --> K((end if))
-K -->|input| L((end while))
-L ==> M((end)) 
+I --> K((***H11*** end if))
+K -->|input| L((***H12*** end while))
+L ==> M((***H13*** end)) 
 end
 ```
 
