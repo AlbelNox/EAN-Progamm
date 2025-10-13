@@ -93,20 +93,20 @@ After we pressed a key, we get back to the eanmenue and can input the next ean f
 ### runTestsAssert()
 ```mermaid
 graph TD
-subgraph "runTestsAssert"
-A(start) --> B(for)
-B --> C(end for)
-C --> D(for)
-D --> E(end for)
-E --> F(for)
-F --> G(end for)
-G --> H(for)
-H --> I(end for)
-I --> J(for)
-J --> K(end for)
-K --> L(for)
-L --> M(end for)
-M -->|input| N(end)
+subgraph "runTestsAssert()"
+A((start)) ==> B((for))
+B --> C((end for))
+C --> D((for))
+D --> E((end for))
+E --> F((for))
+F --> G((end for))
+G --> H((for))
+H --> I((end for))
+I --> J((for))
+J --> K((end for))
+K --> L((for))
+L --> M((end for))
+M ==>|input| N((end))
 end
 ```
 
@@ -114,31 +114,31 @@ end
 ```mermaid
 graph TD
 subgraph "runTests()"
-A(start) --> B(for)
-B --> C(if)
-C --> D(endif)
-D --> E(end for)
-E --> F(for)
-F --> G(if)
-G --> H(endif)
-H --> I(end for)
-I --> J(for)
-J --> K(if)
-K --> L(end if)
-L --> M(end for)
-M --> N(for)
-N --> O(if)
-O --> P(endif)
-P --> Q(end for)
-Q --> R(for)
-R --> S(if)
-S --> T(end if)
-T --> U(endfor)
-U --> V(for)
-V --> W(if)
-W --> X(endif)
-X --> Y(end for)
-Y --> Z(end)
+A((start)) ==> B((for))
+B --> C((if))
+C --> D((endif))
+D --> E((end for))
+E --> F((for))
+F --> G((if))
+G --> H((endif))
+H --> I((end for))
+I --> J((for))
+J --> K((if))
+K --> L((end if))
+L --> M((end for))
+M --> N((for))
+N --> O((if))
+O --> P((endif))
+P --> Q((end for))
+Q --> R((for))
+R --> S((if))
+S --> T((end if))
+T --> U((endfor))
+U --> V((for))
+V --> W((if))
+W --> X((endif))
+X --> Y((end for))
+Y ==> Z((end))
 end
 ```
 
@@ -146,7 +146,7 @@ end
 ```mermaid
 graph TD
 subgraph "waitForUser()"
-A(start) -->|input| B(end) 
+A((start)) ==>|input| B((end)) 
 end
 ```
 
@@ -154,9 +154,9 @@ end
 ```mermaid
 graph TD
 subgraph "isPlaceholder()"
-A(start) --> B(if)
-B --> C(end if)
-C --> D(end)
+A((start)) ==> B((if))
+B --> C((end if))
+C ==> D((end))
 end
 ```
 
@@ -164,20 +164,20 @@ end
 ```mermaid
 graph TD
 subgraph "Main()"
-A(start) --> B(While)
-B -->|input| C(switch)
-C --> D(case 1:)
-C --> E(case 2:)
-C --> F(case 0:)
-C --> G(default)
-D --> H(end switch)
-E --> H
-F --> H
-G --> H
-H --> I(end while)
+A((start)) ==> B((While))
+B -->|input| C((switch))
+C -.-> D((case 1:))
+C -.-> E((case 2:))
+C -.-> F((case 0:))
+C -.-> G((default))
+D -.-> H((end switch))
+E -.-> H
+F -.-> H
+G -.-> H
+H --> I((end while))
 B --> I
 H --> B
-I --> J(end)
+I ==> J((end))
 end
 ```
 
@@ -185,10 +185,10 @@ end
 ```mermaid
 graph TD
 subgraph "eanValidation()"
-A(start) --> B(for)
-B --> C(endfor)
-C --> D(if)
-D --> E(end)
+A((start)) ==> B((for))
+B --> C((endfor))
+C --> D((if))
+D ==> E((end))
 end
 ```
 
@@ -196,15 +196,15 @@ end
 ```mermaid
 graph TD
 subgraph "checkValidEAN()"
-A(start) --> B(if)
-B --> C(then)
-B --> D(else)
-C --> E(if)
-E --> F(then)
-E --> G(else)
-G --> H(end)
-D --> H
-F --> H
+A((start)) ==> B((if))
+B -.-> C((then))
+B -.-> D((else))
+C --> E((if))
+E -.-> F((then))
+E -.-> G((else))
+G ==> H((end))
+D ==> H
+F ==> H
 end
 ```
 
@@ -212,21 +212,21 @@ end
 ```mermaid
 graph TD
 subgraph "eanCheckProgram()"
-A(start) --> B(while)
-B-->|input| C(if)
-C --> D(then)
+A((start)) ==> B((while))
+B-->|input| C((if))
+C -.-> D((then))
 D -->|input| L
-C --> E(end if)
-E --> F(if)
-F --> G(then)
+C --> E((end if))
+E --> F((if))
+F -.-> G((then))
 G -->|input| L
-F --> H(end if)
-H --> I(if)
-I --> J(then)
+F --> H((end if))
+H --> I((if))
+I -.-> J((then))
 J -->|input| L
-I --> K(end if)
-K -->|input| L(end while)
-L --> M(end) 
+I --> K((end if))
+K -->|input| L((end while))
+L ==> M((end)) 
 end
 ```
 
