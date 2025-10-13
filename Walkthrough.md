@@ -88,50 +88,145 @@ Else we get a respone `invalid string`.
 After we pressed a key, we get back to the eanmenue and can input the next ean for the check.
 ```
 
-# Control flow graph
-### Legend
-``` md
-(1)           Startpoint (Programstart)
-(2)           Mainmenue and userinput
-(3–6)         Testmode: run Tests, shows results, waits for input of user, return to mainmenue
-(7–17)        EAN-Checker-Menue with loop – checks input, runs validation, shows results, return to mainmenue
-(10)          return to mainmenue if input is 'exit
-(18)          Programend
+# Control flow graphs
+
+### runTestsAssert()
+```mermaid
+graph TD
+subgraph "runTestsAssert"
+A(start) --> B(for)
+B --> C(end for)
+C --> D(for)
+D --> E(end for)
+E --> F(for)
+F --> G(end for)
+G --> H(for)
+H --> I(end for)
+I --> J(for)
+J --> K(end for)
+K --> L(for)
+L --> M(end for)
+M -->|input| N(end)
+end
 ```
 
-``` scss
-(1) Start
- ↓
-(2) mainMenue display [1=Tests, 2=EanCheck, 0=End]
- ↓
- ├── [input == 1] → (3)
- │                   ↓
- │                 (4) runTests()
- │                   ↓
- │                 (5) runTestsAssert()
- │                   ↓
- │                 (6) waitForUser()
- │                   ↓
- │                 (2) back to mainmenue
- │
- ├── [input == 2] → (7)
- │                   ↓
- │                 (8) eanCheckProgram()
- │                   ↓
- │                 (9) check input
- │                     ↓
- │                     ├── [input == "exit"] → (10) waitForUser() → (2)
- │                     │
- │                     ├── [!checkValidEAN] → (11) errormessage → (12) waitForUser() → (8)
- │                     │
- │                     ├── [checkValidEAN == true]
- │                     │         ↓
- │                     │     (13) eanValidation(input)
- │                     │         ↓
- │                     │         ├── [valid] → (14) "EAN valid" → (15) waitForUser() → (8)
- │                     │         └── [invalid] → (16) "EAN invalid" → (17) waitForUser() → (8)
- │                     │
- │                     └── (8) while untin input = "exit"
- │
- └── [input == 0] → (18) End Program
+### runTests()
+```mermaid
+graph TD
+subgraph "runTests()"
+A(start) --> B(for)
+B --> C(if)
+C --> D(endif)
+D --> E(end for)
+E --> F(for)
+F --> G(if)
+G --> H(endif)
+H --> I(end for)
+I --> J(for)
+J --> K(if)
+K --> L(end if)
+L --> M(end for)
+M --> N(for)
+N --> O(if)
+O --> P(endif)
+P --> Q(end for)
+Q --> R(for)
+R --> S(if)
+S --> T(end if)
+T --> U(endfor)
+U --> V(for)
+V --> W(if)
+W --> X(endif)
+X --> Y(end for)
+Y --> Z(end)
+end
 ```
+
+### waitForUser()
+```mermaid
+graph TD
+subgraph "waitForUser()"
+A(start) -->|input| B(end) 
+end
+```
+
+### isPlatceholder()
+```mermaid
+graph TD
+subgraph "isPlaceholder()"
+A(start) --> B(if)
+B --> C(end if)
+C --> D(end)
+end
+```
+
+### Main()
+```mermaid
+graph TD
+subgraph "Main()"
+A(start) --> B(While)
+B -->|input| C(switch)
+C --> D(case 1:)
+C --> E(case 2:)
+C --> F(case 0:)
+C --> G(default)
+D --> H(end switch)
+E --> H
+F --> H
+G --> H
+H --> I(end while)
+B --> I
+H --> B
+I --> J(end)
+end
+```
+
+### eanValidation()
+```mermaid
+graph TD
+subgraph "eanValidation()"
+A(start) --> B(for)
+B --> C(endfor)
+C --> D(if)
+D --> E(end)
+end
+```
+
+### checkValidEAN()
+```mermaid
+graph TD
+subgraph "checkValidEAN()"
+A(start) --> B(if)
+B --> C(then)
+B --> D(else)
+C --> E(if)
+E --> F(then)
+E --> G(else)
+G --> H(end)
+D --> H
+F --> H
+end
+```
+
+### eanCheckProgram()
+```mermaid
+graph TD
+subgraph "eanCheckProgram()"
+A(start) --> B(while)
+B-->|input| C(if)
+C --> D(then)
+D -->|input| L
+C --> E(end if)
+E --> F(if)
+F --> G(then)
+G -->|input| L
+F --> H(end if)
+H --> I(if)
+I --> J(then)
+J -->|input| L
+I --> K(end if)
+K -->|input| L(end while)
+L --> M(end) 
+end
+```
+
