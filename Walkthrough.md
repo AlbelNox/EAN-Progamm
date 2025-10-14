@@ -1,15 +1,28 @@
 # Methods
 ## List of Methods in Program
+ - Main
  - eanCheckProgram
- - checkValidEAN
- - eanValidation
- - isPlaceholder
+ - checkValidEAN: check string length?, numbers?
+ - eanValidation: check string valid | invald
+ - isPlaceholder: check string 00000000 | 0000000000000
  - waitForUser
- - runTests
- - runTestsAssert
+ - runTests: Blackbox-test
+ - runTestsAssert: Whitebox-test
 
 # Infotext for Methods
-### Here is written what each Method is doing
+### Explanation of each method 
+### Controll Flow Charts for Methods
+### How to document tests
+### Used tests in this solution
+
+## Main
+```md
+The program will start in the mainmenue where the user can input a string:
+`0` programend
+`1` runTests  
+`2` starting eanCheckProgram
+else input again
+```
 
 ## eanCheckProgram
 ``` md
@@ -24,9 +37,9 @@ In the end we have a `Valid` or `Invalid` output.
 
 ## checkValidEAN
 ``` md
-We work twith the input from the user.
+We work with the input from the user.
 The input is checked via Regex if it is a digit [0-9].
-Next we check the lengthof the input String, is it 8 or 13 digits long. 
+Next we check the length of the input String, is it 8 or 13 digits long. 
 If that is correct we use `isPlaceholder`.
 If there are more or less digits or other symbols in the string, we give the User an response with an `invalid` text.
 ```
@@ -84,7 +97,7 @@ If the string is now invalid, we get a response which provide us with this data.
 The program will also restart after an input. 
 If the check is still valid, now we check the ean of it`s validation. 
 If it is valid, we get a response in the console `valid EAN`. 
-Else we get a respone `invalid string`. 
+Else we get a response `invalid string`. 
 After we pressed a key, we get back to the eanmenue and can input the next ean for the check.
 ```
 
@@ -263,8 +276,30 @@ end
   Explanation: `Start program` [mainmenue] -> case 2 -> `start eanCheckProgram` -> input validString but invalidEan -> response `ean invalid` -> repeat loop `start eanCheckProgram`
 
 	9. (E1) -> (E2) -> (E3) -> (E5) -> (H1) -> (H2) -> (H3) -> (H5) -> (H6) -> (H8) -> (H9) -> (H11) -> (H12) -> (H2) -> …
-  Explanation: `Start program` [mainmenue] -> case 2 -> `start eanCheckProgram` -> input validString & validEan -> respone `ean valid` -> repeat loop `start eanCheckProgram`
-
-
+  Explanation: `Start program` [mainmenue] -> case 2 -> `start eanCheckProgram` -> input validString & validEan -> response `ean valid` -> repeat loop `start eanCheckProgram`
 ```
 
+# How to Document the Testtrials?
+
+```markdown
+In my opinion, the CLI-ui should be tested by users.
+For the Modules there should be tests with mocked data, To be sure, that there is data to run the tests on.
+The result for each test can be logged in a seperate file, there also could be an api for not mocked test.
+This could also be logged in a file. The tests should check each way in the modules.
+In this case, we should check, if the string is empty, has letters in it,
+has less numbers or to many numbers and at last it should be checked if the inputed ean is valid or invalid.
+
+In this solution, the tests are included in the mainmenue, so there is no need for a logging file.
+But, there is no api for not mocked data.
+
+`runTests()` is a BlackBox-test
+   - validEans
+   - invalidEans
+   - placeholder (0*8 | 0*13)
+   - no number in string
+   - wrong length of string
+   - empty string
+
+`runTestsAssert()` is a WhiteBox-test
+   - assert result with expected result
+```
