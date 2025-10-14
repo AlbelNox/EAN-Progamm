@@ -177,7 +177,7 @@ G -.-> H
 H --> I((***E9*** end while))
 B --> I
 H --> B
-I ==> J((***E10*** end))
+B ==> J((***E10*** end))
 end
 ```
 
@@ -226,7 +226,45 @@ I -.-> J((***H10*** then))
 J -->|input| L
 I --> K((***H11*** end if))
 K -->|input| L((***H12*** end while))
-L ==> M((***H13*** end)) 
+L --> B
+B ==> M((***H13*** end)) 
 end
+```
+
+# Possible Ways
+```markdown
+**Legend**:
+(<Step>)    = one step
+-> next     = going to the next step 
+...         = repeating process
+
+	1. (E1) -> (E2) -> (E3) -> (E6) -> (E2) -> (E9) -> (E10)
+  Explanation: `Start program` [mainmenue] -> input `0` in mainmenue -> `end programm`
+ 
+	2. (E1) -> (E2) -> (E3) -> (E7) -> (E8) -> (E2) -> …
+  Explanation: `Start program` [mainmenue] -> incorrect input -> repeat loop -> input
+
+	3. (E1) -> (E2) -> (E3) -> (E4) -> (B1) -> (B2) -> … -> (B26) -> (A1) -> (A2) -> … -> (A14) -> (E8) -> (E2) -> …
+  Explanation: `Start program` [mainmenue] -> case 1 -> `runTests` & `runTestsAssert` -> repeat loop input 
+
+	4. (E1) -> (E2) -> (E3) -> (E5) -> (H1) -> (H2) -> (H3) -> (H4) -> (C1) -> (C2) -> (H12) -> (H13) -> (E8) -> (E2) -> …
+  Explanation: `Start program` [mainmenue] -> case 2 -> `start eanCheckProgram` -> input `exit` -> `end eanCheckProgram` -> [mainmenue] -> repeat loop
+
+	5. (E1) -> (E2) -> (E3) -> (E5) -> (H1) -> (H2) -> (H3) -> (H5) -> (H6) -> (G1) -> (G2) -> (G4) -> (G8) -> (H7) -> (C1) -> (C2) -> (H12) -> (H2) -> …
+  Explanation: `Start program` [mainmenue] -> case 2 -> `start eanCheckProgram` -> input invalidString  -> check string -> reponse `invalidEan` -> repeat loop `start eanCheckProgram`
+
+	6.  (E1) -> (E2) -> (E3) -> (E5) -> (H1) -> (H2) -> (H3) -> (H5) -> (H6) -> (G1) -> (G2) -> (G3) -> (G5) -> (G6) -> (D1) -> (D2) -> (D3) -> (D4) -> (G8) -> (H7) -> (C1) -> (C2) -> (H12) -> (H2) -> …
+  Explanation: `Start program` [mainmenue] -> case 2 -> `start eanCheckProgram` -> input invalidString  -> check string -> reponse `invalidEan` -> repeat loop `start eanCheckProgram`
+
+	7.  (E1) -> (E2) -> (E3) -> (E5) -> (H1) -> (H2) -> (H3) -> (H5) -> (H6) -> (G1) -> (G2) -> (G3) -> (G5) -> (D1) -> (D2) -> (D3) -> (D4) -> (G7) -> (G8) -> (H7) -> (C1) -> (C2) -> (H12) -> (H2) -> …
+  Explanation: `Start program` [mainmenue] -> case 2 -> `start eanCheckProgram` -> input invalidString  -> check string -> reponse `invalidEan` -> repeat loop `start eanCheckProgram`
+
+	8. (E1) -> (E2) -> (E3) -> (E5) -> (H1) -> (H2) -> (H3) -> (H5) -> (H6) -> (H8) -> (H9) -> (H10) -> (C1) -> (C2) -> (H12) -> (H2) -> …
+  Explanation: `Start program` [mainmenue] -> case 2 -> `start eanCheckProgram` -> input validString but invalidEan -> response `ean invalid` -> repeat loop `start eanCheckProgram`
+
+	9. (E1) -> (E2) -> (E3) -> (E5) -> (H1) -> (H2) -> (H3) -> (H5) -> (H6) -> (H8) -> (H9) -> (H11) -> (H12) -> (H2) -> …
+  Explanation: `Start program` [mainmenue] -> case 2 -> `start eanCheckProgram` -> input validString & validEan -> respone `ean valid` -> repeat loop `start eanCheckProgram`
+
+
 ```
 
