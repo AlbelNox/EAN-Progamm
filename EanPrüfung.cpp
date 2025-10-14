@@ -72,7 +72,7 @@ void eanCheckProgram()
 //verify input is valid
 bool checkValidEAN(string input)
 {
-    regex regexNumber("^[0-9]*$");  // just digits are allowed
+    regex regexNumber("^[0-9]+$");  // just digits are allowed
 
     if(regex_match(input, regexNumber)) //verify digits
     {
@@ -156,6 +156,18 @@ void runTests()
     {
         "00000000", "0000000000000"
     };
+    string noNumberEans[] =
+    {
+        "asdfrekl", "asdfghjklö"
+    };
+    string wrongLength[] = 
+    {
+        "123", "123456", "123456789456789456"
+    };
+    string emptyString[] =
+    {
+        "", "\n"
+    };
     
     cout << "\n--- Test \033[32mvalid\033[0m EANs ---\n";
     for (const string& ean : validEans) {
@@ -183,6 +195,33 @@ void runTests()
             cout << "EAN: " << ean << " -> " << (result ? " \033[32mvalid\033[0m" : " \033[31minvalid\033[0m") << endl;
         }
     }
+
+    cout << "\n--- Test \033[33mnoNumbers\033[0m EANs ---\n";
+    for (const string& ean : noNumberEans) {
+        if(checkValidEAN(ean))
+        {
+            bool result = eanValidation(ean);
+            cout << "EAN: " << ean << " -> " << (result ? " \033[32mvalid\033[0m" : " \033[31minvalid\033[0m") << endl;
+        }
+    }
+
+    cout << "\n--- Test \033[33mwrongLength\033[0m EANs ---\n";
+    for (const string& ean : wrongLength) {
+        if(checkValidEAN(ean))
+        {
+            bool result = eanValidation(ean);
+            cout << "EAN: " << ean << " -> " << (result ? " \033[32mvalid\033[0m" : " \033[31minvalid\033[0m") << endl;
+        }
+    }
+
+    cout << "\n--- Test \033[33memptyString\033[0m EANs ---\n";
+    for (const string& ean : emptyString) {
+        if(checkValidEAN(ean))
+        {
+            bool result = eanValidation(ean);
+            cout << "EAN: " << ean << " -> " << (result ? " \033[32mvalid\033[0m" : " \033[31minvalid\033[0m") << endl;
+        }
+    }
 }
 
 void runTestsAssert()
@@ -199,6 +238,19 @@ void runTestsAssert()
     {
         "00000000", "0000000000000"
     };
+    string noNumberEans[] =
+    {
+        "asdfrere", "asdfghjklö"
+    };
+    string wrongLength[] = 
+    {
+        "123", "123456", "123456789456789456"
+    };
+    string emptyString[] =
+    {
+        "", "\n"
+    };
+
     cout << "\n--- \033[35mAssert Tests\033[0m ---\n";
     // Test valid EANs
     for (const string& ean : validEans) {
@@ -217,6 +269,20 @@ void runTestsAssert()
         assert(!checkValidEAN(ean));     
     }
 
+    // Test others then numbers
+    for (const string& ean : noNumberEans) {
+        assert(!checkValidEAN(ean));
+    }
+    
+    // Test wrongLength of input
+    for (const string& ean : wrongLength) {
+        assert(!checkValidEAN(ean));
+    }
+
+    // Test empty String as input
+    for (const string& ean : emptyString) {
+        assert(!checkValidEAN(ean));
+    }
     cout << "\033[32mAll Assert Tests Succeed!\033[0m\n";
     waitForUser();
 }
