@@ -14,6 +14,7 @@
 ### Controll Flow Charts for Methods
 ### How to document tests
 ### Used tests in this solution
+### How to open the charts if you just have the the .md
 
 ## Main
 ```md
@@ -303,3 +304,12 @@ But, there is no api for not mocked data.
 `runTestsAssert()` is a WhiteBox-test
    - assert result with expected result
 ```
+
+# How to open the charts if you just have the -md
+
+[Tool for display charts](https://mermaid.live/edit#pako:eNpVkTFvgzAQhf-KdVMrkQhSEsBDpQbaLKnaIVMggxUu2EqwkTFKU-C_14Cqpjfd3fveu-FaOKocgcLpoq5HzrQhuySTxNZLGnMtalOy-kBms-dug4aUSuKtI-uHjSI1V1UlZPE48esBInG7HTAkhgt57icpHv0fEjuSpFtWGVUd7pXdVXXkNRWf3Mb_V7hG63pLT4ye2OzINImZHhFwoNAiB2p0gw6UqEs2jNAOagaGY4kZUNvmTJ8zyGRvPRWTe6XKX5tWTcHBZl9qOzVVzgwmghWa_SEoc9SxaqQBGo0JQFv4AuoFwXzlR9FquXC9Jy_yVg7cgPrhfGG3QeiGYeD73rJ34Hu86c7DYOnelecA5sIo_T69YfxG_wOZZ3vu)
+```markdown
+Just copy & paste the chart from `graph TD` to `end` in the provided box and the chart will be displayed.
+Or use the following link, to see it in my repository in GitHub (this file).
+```
+[Walktrough.md](https://github.com/AlbelNox/EAN-Progamm/edit/main/Walkthrough.md)
